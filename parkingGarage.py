@@ -24,12 +24,15 @@ class Garage():
         
     currentTicket ={
     'tickets':100,
-    'parkingSpaces':100
+    'parkingSpaces':100,
+    'paid':'False'
 } 
-    def takeTicket(self, tickets):
+
+   
+    def takeTicket(self):
         
-        if currentTicket[tickets]>0:
-            currentTicket[tickets] -= 1
+        if currentTicket['tickets']>0:
+            currentTicket['tickets'] -= 1
                 
         
         # This should decrease the amount of tickets available by 1
@@ -38,8 +41,8 @@ class Garage():
 
     def leaveGarage(self):
         
-        if currentTicket[parkingSpaces]>0:
-            currentTicket[parkingSpaces] +=1
+        if currentTicket['parkingSpaces']>0:
+            currentTicket['parkingSpaces'] +=1
         
         # If the ticket has been paid, display a message of "Thank You, have a nice day"
         # If the ticket has not been paid, display an input prompt for payment
@@ -58,6 +61,18 @@ class Garage():
     def payForParking(self):
         # Display an input that waits for an amount from the user and store it in a variable
         
+        payment = int(input('Paid(Enter 1) (or) UnPaid(Enter 2): '))
+        if payment == 1:
+            print('TICKET HAS BEEN PAID {15 MINS COOLDOWN}')
+            currentTicket['paid'] = 'True'
+            print(currentTicket)
+        elif payment == 2:
+            print('TICKET HAS NOT BEEN PAID {PLEASE MAKE A PAYMENT}')
+        else:
+            print('INVALID OPTION {PLEASE TRY AGAIN}')
+        
         # If the payment variable is not empty then (meaning the ticket has been paid) -> display a message to the user that their ticket has been paid and they have 15mins to leave
         
         # This should update the "currentTicket" dictionary key "paid" to True
+
+
