@@ -12,9 +12,6 @@ garage = ['tickets', 'parkingSpaces']
 #self.currentTicket -> dictionary
 
 
-
-
-
 class Garage():
     def __init__(self, takeTicket, parkingSpaces, payForParking, leaveGarage):
         self.takeTicket = takeTicket
@@ -22,17 +19,16 @@ class Garage():
         self.payForParking = payForParking
         self.leaveGarage = leaveGarage
         
-    self.currentTicket ={
+    currentTicket ={
     'tickets':100,
     'parkingSpaces':100,
     'paid':'False'
-} 
-
+}
    
     def takeTicket(self):
         
         if self.currentTicket['tickets']>0:
-            self.self.currentTicket['tickets'] -= 1
+            self.currentTicket['tickets'] -= 1
                 
         
         # This should decrease the amount of tickets available by 1
@@ -54,8 +50,8 @@ class Garage():
     def parkingSpaces(self):
         # This should decrase the amount of parkingSpaces available by 1
         
-        if self.currentTicket[parkingSpaces]>0:
-            self.currentTicket[parkingSpaces] -=1
+        if self.currentTicket['parkingSpaces']>0:
+            self.currentTicket['parkingSpaces'] -=1
         
         
     def payForParking(self):
@@ -76,3 +72,17 @@ class Garage():
         # This should update the "self.currentTicket" dictionary key "paid" to True
 
 
+currentTicket = Garage()
+
+def main():
+    while True:
+        response = input('Would you like to park? (Y/N): ')
+            
+        if response == 'yes' or response == 'y':
+            currentTicket.takeTicket()
+            
+        # elif response.lower() == 'no' or response == 'n':
+        #     print("Have a good day!")
+        #     break
+    
+main()
