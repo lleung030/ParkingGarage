@@ -13,48 +13,39 @@ garage = ['tickets', 'parkingSpaces']
 
 
 class Garage():
-    def __init__(self, takeTicket, parkingSpaces, payForParking, leaveGarage):
-        self.takeTicket = takeTicket
-        self.parkingSpaces = parkingSpaces
-        self.payForParking = payForParking
-        self.leaveGarage = leaveGarage
-        
+    def __init__(self):
+        spaces = 2
+    
     currentTicket ={
-    'tickets':100,
-    'parkingSpaces':100,
+    'tickets':5,
+    'parkingSpaces':5,
     'paid':'False'
 }
    
-    def takeTicket(self):
-        
-        if self.currentTicket['tickets']>0:
+    def takeTicket(self):  
+        if self.currentTicket['tickets'] >0:
+            
             self.currentTicket['tickets'] -= 1
-                
+            print (f"There is now {self.currentTicket['tickets']} tickets left.")
         
-        # This should decrease the amount of tickets available by 1
-        
-        # This should decrese the amount of parkingSpaces avaialable by 1
+        elif self.currentTicket['tickets'] <= 0:
+            print('No more tickets left. Please exit!')
 
     def leaveGarage(self):
-        
-        if self.currentTicket['parkingSpaces']>0:
-            self.currentTicket['parkingSpaces'] +=1
-        
-        # If the ticket has been paid, display a message of "Thank You, have a nice day"
-        # If the ticket has not been paid, display an input prompt for payment
-        # Once paid, display message "Thank you, have a nice day!"
-        # Update parkingSpaces list to increase by 1 (meaning add to the parkingSpaces list)
-        # Update tickets list to increase by 1 (meaning add to the tickets list)
-        
+
+        self.currentTicket['parkingSpaces'] +=1
+        print(f"There is now {self.currentTicket['parkingSpaces']} parking spaces left.")        
             
     def parkingSpaces(self):
-        # This should decrase the amount of parkingSpaces available by 1
-        
-        if self.currentTicket['parkingSpaces']>0:
+        if self.currentTicket['parkingSpaces'] >0:
             self.currentTicket['parkingSpaces'] -=1
+            print(f"There is now {self.currentTicket['parkingSpaces']} parking spaces left.")
+        
+        elif self.currentTicket['parkingSpaces'] <= 0:
+            print('No more parking spaces left. Please exit!')
         
         
-    def payForParking(self):
+    def payForParking(self, payment):
         # Display an input that waits for an amount from the user and store it in a variable
         
         payment = int(input('Paid(Enter 1) (or) UnPaid(Enter 2): '))
@@ -72,17 +63,25 @@ class Garage():
         # This should update the "self.currentTicket" dictionary key "paid" to True
 
 
-currentTicket = Garage()
+car = Garage()
 
 def main():
     while True:
         response = input('Would you like to park? (Y/N): ')
             
         if response == 'yes' or response == 'y':
-            currentTicket.takeTicket()
+            car.takeTicket()
+            car.parkingSpaces()
+        
+            choice = input('Would you like to leave now?: (y/n)')
             
-        # elif response.lower() == 'no' or response == 'n':
-        #     print("Have a good day!")
-        #     break
+            if choice == 'yes':
+                car.payForParking()
+                
+                
+        elif response.lower() == 'no' or response == 'n':
+            car.leaveGarage()
+            print("Have a good day!")
+            break
     
 main()
