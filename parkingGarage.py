@@ -19,8 +19,35 @@ class Garage():
     currentTicket ={
     'tickets':5,
     'parkingSpaces':5,
-    'paid':'False'
+    'paid':'False',
+    'hrsParked': {'basePrice' : 5.00}
+    
 }
+
+#subclass of time 
+
+    
+
+        
+
+
+    def parkTime(self,hrs):
+        #user in puts the amount of hours as an int value, the function the
+        time = input("Please pay to exit. How many hours were you parked?")
+        
+        #takes input in "time" and multiplies it by 50 cents, then adds it to the baseprice of 5 dollars
+        aPrice = "${:.2f}".format((.50* float(time)) + self.currentTicket['hrsParked']['basePrice'])
+        
+        
+        exit = input(f'please pay {aPrice}')
+        
+        if exit != aPrice:
+            print(f'Please pay the correct price of {aPrice}.')
+        else:
+            print('have a nice day')
+        
+    
+    
    
     def takeTicket(self):  
         if self.currentTicket['tickets'] >0:
@@ -75,8 +102,8 @@ def main():
         
             choice = input('Would you like to leave now?: (y/n)')
             
-            if choice == 'yes':
-                car.payForParking()
+            if choice == 'yes' or choice == 'y':
+                car.parkTime(2)
                 
                 
         elif response.lower() == 'no' or response == 'n':
