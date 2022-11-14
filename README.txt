@@ -1,18 +1,19 @@
 
 class Garage():
-    def __init__(self):
+    def __init__(self, ):
         spaces = 2
-    
+        self.paid = False
+        
     currentTicket ={
-    'tickets':5,
-    'parkingSpaces':5,
     'paid':'False'
 }
        
-    def pay(self):
+    def payforParking(self):
         
+        print('hello world')
         print('Ticket has been paid. Please exit... {15 MINS COOLDOWN}')
-        self.currentTicket['paid'] = 'True'
+        Garage.self.paid = True
+        print (Garage.self.paid)
         print(self.currentTicket['paid'])
         # print the number of spots and tickets left afterward
         
@@ -29,7 +30,7 @@ def main():
     #     response = input('Would you like to park? (Y/N): ')
             
     #     if response == 'yes' or response == 'y':    
-    car.pay()
+    car.payforParking()
     
     # elif choice == 'no':
         #     print('bye')
